@@ -5,16 +5,18 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large'
   fullWidth?: boolean
   icon?: JSX.Element
+  onClick?: () => (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const Button = ({
   children,
   icon,
   size = 'medium',
-  fullWidth = false
+  fullWidth = false,
+  ...props
 }: ButtonProps) => (
   // Retorna true ou false
-  <S.Wrapper size={size} fullWidth={fullWidth} hasIcon={!!icon}>
+  <S.Wrapper size={size} fullWidth={fullWidth} hasIcon={!!icon} {...props}>
     {icon}
     {/* Se for children faz isso */}
     {!!children && <span>{children}</span>}
