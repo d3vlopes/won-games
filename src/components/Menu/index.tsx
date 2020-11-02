@@ -4,7 +4,9 @@ import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outline
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 
+import Button from 'components/Button'
 import Logo from 'components/Logo'
+
 import * as S from './styles'
 
 const Menu = () => {
@@ -34,6 +36,16 @@ const Menu = () => {
           <S.MenuLink href="#">Home</S.MenuLink>
           <S.MenuLink href="#">Explorar</S.MenuLink>
         </S.MenuNav>
+
+        <S.RegisterBox>
+          <Button fullWidth size="large">
+            Entrar
+          </Button>
+          <span>ou</span>
+          <S.CreateAccount href="#" title="Criar Conta">
+            Criar Conta
+          </S.CreateAccount>
+        </S.RegisterBox>
       </S.MenuFull>
     </S.Wrapper>
   )
