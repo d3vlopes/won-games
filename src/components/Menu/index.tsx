@@ -8,17 +8,17 @@ import * as S from './styles'
 const Menu = () => (
   <S.Wrapper>
     <S.IconWrapper>
-      <MenuIcon />
+      <MenuIcon aria-label="Abrir Menu" />
     </S.IconWrapper>
     <S.LogoWrapper>
       <Logo hideOnMobile />
     </S.LogoWrapper>
     <S.MenuGroup>
       <S.IconWrapper>
-        <SearchIcon />
+        <SearchIcon aria-label="Pesquisar" />
       </S.IconWrapper>
       <S.IconWrapper>
-        <ShoppingCartIcon />
+        <ShoppingCartIcon aria-label="Abrir Carrinho" />
       </S.IconWrapper>
     </S.MenuGroup>
   </S.Wrapper>
