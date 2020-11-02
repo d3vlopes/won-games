@@ -118,3 +118,26 @@ export const MenuFull = styled.nav<MenuFullProps>`
     }
   `}
 `
+
+export const RegisterBox = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 ${theme.spacings.xlarge} ${theme.spacings.xlarge};
+
+    > span {
+      display: block;
+      margin: ${theme.spacings.xxsmall} 0;
+      font-size: ${theme.font.sizes.xsmall};
+    }
+  `}
+`
+
+export const CreateAccount = styled.a`
+  ${({ theme }) => css`
+    text-decoration: none;
+    color: ${theme.colors.primary};
+    border-bottom: 0.2rem solid ${theme.colors.primary};
+  `}
+`
