@@ -6,6 +6,7 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 
 import Button from 'components/Button'
 import Logo from 'components/Logo'
+import MediaMatch from 'components/MediaMatch'
 
 import * as S from './styles'
 
@@ -18,12 +19,24 @@ const Menu = ({ username }: MenuProps) => {
 
   return (
     <S.Wrapper>
-      <S.IconWrapper onClick={() => setIsOpen(true)}>
-        <MenuIcon aria-label="Abrir Menu" />
-      </S.IconWrapper>
+      {/* Quero que isso apareço só quando for menor que o tamanho medium */}
+      <MediaMatch lessThan="medium">
+        <S.IconWrapper onClick={() => setIsOpen(true)}>
+          <MenuIcon aria-label="Abrir Menu" />
+        </S.IconWrapper>
+      </MediaMatch>
+
       <S.LogoWrapper>
         <Logo hideOnMobile />
       </S.LogoWrapper>
+
+      <MediaMatch greaterThan="medium">
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explorar</S.MenuLink>
+        </S.MenuNav>
+      </MediaMatch>
+
       <S.MenuGroup>
         <S.IconWrapper>
           <SearchIcon aria-label="Pesquisar" />
@@ -31,6 +44,11 @@ const Menu = ({ username }: MenuProps) => {
         <S.IconWrapper>
           <ShoppingCartIcon aria-label="Abrir Carrinho" />
         </S.IconWrapper>
+        {!username && (
+          <MediaMatch greaterThan="medium">
+            <Button>Entrar</Button>
+          </MediaMatch>
+        )}
       </S.MenuGroup>
 
       {/* Menu mobile */}
