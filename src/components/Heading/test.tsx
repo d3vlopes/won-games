@@ -44,5 +44,13 @@ describe('<Heading />', () => {
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyle({
       'font-size': '1.6rem'
     })
+    expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyleRule(
+      'width',
+      '3rem',
+      // Quero esse valor quando tiver um after
+      {
+        modifier: '::after'
+      }
+    )
   })
 })
