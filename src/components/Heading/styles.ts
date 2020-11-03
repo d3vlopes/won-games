@@ -5,6 +5,10 @@ import { HeadingProps } from '.'
 const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.medium};
+
+    &::after {
+      width: 3rem;
+    }
   `,
   medium: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.xlarge};
@@ -36,11 +40,11 @@ const wrapperModifiers = {
 }
 
 export const Wrapper = styled.h2<HeadingProps>`
-  ${({ theme, color, size, lineLeft, lineBottom }) => css`
+  ${({ theme, color, lineLeft, lineBottom, size }) => css`
     color: ${theme.colors[color!]};
 
-    ${!!size && wrapperModifiers[size](theme)};
     ${lineLeft && wrapperModifiers.lineLeft(theme)};
     ${lineBottom && wrapperModifiers.lineBottom(theme)};
+    ${!!size && wrapperModifiers[size](theme)};
   `}
 `
