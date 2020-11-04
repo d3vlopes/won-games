@@ -1,4 +1,4 @@
-import Link from 'next/adsdsds'
+import Link from 'next/link'
 
 import Heading from 'components/Heading'
 import Logo from 'components/Logo'
@@ -14,6 +14,7 @@ const Footer = () => (
         </Heading>
 
         <a href="mailto:sac@wongames.com">sac@wongames.com</a>
+        <a href="tel:+5137151234">(51) 3715-1234</a>
       </S.Column>
 
       <S.Column>
@@ -73,15 +74,18 @@ const Footer = () => (
 
       <S.Column>
         <Heading color="black" lineColor="secondary" lineBottom size="small">
-          Localização
+          Endereço
         </Heading>
         <span>Loren Ipsum dolor sit.</span>
         <span>Loren Ipsum</span>
         <span>Lorem, ipsum dolor.</span>
       </S.Column>
-
-      <S.Copyright>Won Games 2020 © Todos os direitos reservados.</S.Copyright>
     </S.Content>
+    <S.Copyright>
+      Won Games
+      <br />
+      2020 © Todos os direitos reservados.
+    </S.Copyright>
   </S.Wrapper>
 )
 
