@@ -12,11 +12,8 @@ const props = {
 }
 
 describe('<Banner />', () => {
-  it('should render the heading', () => {
+  it('should render correctly', () => {
     const { container } = renderWithTheme(<Banner {...props} />)
-    // Verificar se o title está sendo passado x
-    // Verificar se o subitle está sendo passado
-    // Verificar se a imagem está sendo passado
     expect(
       screen.getByRole('heading', { name: /Defy death/i })
     ).toBeInTheDocument()
