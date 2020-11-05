@@ -39,19 +39,16 @@ describe('<Menu />', () => {
   // Verifica se os textos aparecem quando não está logado
   it('should show register box when logged out', () => {
     renderWithTheme(<Menu />)
-    // Verifica se os textos não aparecem quando se tem um username
     expect(screen.queryByText(/minha conta/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/favoritos/i)).not.toBeInTheDocument()
-
     expect(screen.getByText(/entrar/i)).toBeInTheDocument()
-    expect(screen.getByText(/criar conta/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/Criar conta/i)).toHaveLength(2)
   })
 
   it('should show whishligth and account when logged in', () => {
     renderWithTheme(<Menu username="lopes" />)
     expect(screen.getByText(/minha conta/i)).toBeInTheDocument()
     expect(screen.getByText(/favoritos/i)).toBeInTheDocument()
-
     expect(screen.queryByText(/entrar/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/criar conta/i)).not.toBeInTheDocument()
   })
