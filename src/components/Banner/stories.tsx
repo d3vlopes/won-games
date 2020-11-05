@@ -1,9 +1,16 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
-import Banner from '.'
+import Banner, { BannerProps } from '.'
 
 export default {
   title: 'Banner',
-  component: Banner
+  component: Banner,
+  args: {
+    img: 'https://source.unsplash.com/user/willianjusten/1024x580',
+    title: 'Defy death',
+    subtitle: '<p>Play the new <strong>CrashLands</strong> season</p>',
+    buttonLabel: 'Comprar',
+    buttonLink: '/games/defy-death'
+  }
 } as Meta
 
-export const Default: Story = () => <Banner />
+export const Default: Story<BannerProps> = (args) => <Banner {...args} />
