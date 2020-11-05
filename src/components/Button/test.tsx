@@ -53,4 +53,21 @@ describe('<Button />', () => {
     expect(screen.getByText(/Button/i)).toBeInTheDocument()
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
+
+  it('should render Button as a link', () => {
+    const { debug, container } = renderWithTheme(
+      <Button as="a" href="/link">
+        Button
+      </Button>
+    )
+
+    // Renderiza o componente para teste
+    debug(container)
+
+    // Espera que tenha um href e seu valor tenha /link
+    expect(screen.getByRole('link', { name: /button/i })).toHaveAttribute(
+      'href',
+      '/link'
+    )
+  })
 })
