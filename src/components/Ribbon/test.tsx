@@ -1,13 +1,14 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import Ribbon from '.'
 
 describe('<Ribbon />', () => {
   it('should render the text correctly', () => {
-    renderWithTheme(<Ribbon>Mais Vendidos </Ribbon>)
+    const { container } = renderWithTheme(<Ribbon>Mais Vendidos </Ribbon>)
 
     expect(screen.getByText(/Mais Vendidos/i)).toBeInTheDocument()
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render the with the primary color', () => {
