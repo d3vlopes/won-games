@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
-import Highlight, { HiglightProps } from '.'
+import Highlight, { HighlightProps } from '.'
 
 import item from './mock'
 
@@ -9,13 +9,13 @@ export default {
   args: { ...item }
 } as Meta
 
-export const Default: Story<HiglightProps> = (args) => (
+export const Default: Story<HighlightProps> = (args) => (
   <div style={{ maxWidth: '104rem' }}>
     <Highlight {...args} />
   </div>
 )
 
-export const WithFloatImage: Story<HiglightProps> = (args) => (
+export const WithFloatImage: Story<HighlightProps> = (args) => (
   <div style={{ maxWidth: '104rem' }}>
     <Highlight {...args} />
   </div>
