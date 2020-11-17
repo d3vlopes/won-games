@@ -2,10 +2,11 @@ import { Container } from 'components/Container'
 import Footer from 'components/Footer'
 import Heading from 'components/Heading'
 import Menu from 'components/Menu'
+import { AnyAaaaRecord } from 'dns'
 
 import * as S from './styles'
 
-const Home = () => (
+const Home = ({ heading }: any) => (
   <section>
     <Container>
       <Menu />
@@ -19,7 +20,7 @@ const Home = () => (
 
     <Container>
       <Heading lineLeft lineColor="secondary">
-        Mais Populares
+        {heading}
       </Heading>
     </Container>
 
