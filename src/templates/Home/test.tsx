@@ -4,9 +4,33 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import Home from '.'
 
 describe('<Home />', () => {
-  it('should render the heading', () => {
+  it('should render menu and footer', () => {
     renderWithTheme(<Home />)
 
-    expect(screen.getByRole('heading', { name: /Home/i })).toBeInTheDocument()
+    expect(screen.getByLabelText(/abrir menu/i)).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /contato/i })
+    ).toBeInTheDocument()
+  })
+
+  it('should render the sections', () => {
+    renderWithTheme(<Home />)
+
+    expect(
+      screen.getByRole('heading', { name: /novidades/i })
+    ).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /mais populares/i })
+    ).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /em breve/i })
+    ).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /jogos gratuitos/i })
+    ).toBeInTheDocument()
   })
 })
