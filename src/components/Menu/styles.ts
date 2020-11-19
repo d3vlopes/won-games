@@ -6,6 +6,7 @@ export const Wrapper = styled.menu`
     display: flex;
     align-items: center;
     padding: ${theme.spacings.small} 0;
+    position: relative;
   `}
 `
 
@@ -42,8 +43,8 @@ export const MenuGroup = styled.div`
 export const MenuNav = styled.div`
   ${({ theme }) => css`
     ${media.greaterThan('medium')`
-      margin-left: ${theme.spacings.small};
-    `}
+			margin-left: ${theme.spacings.small};
+		`}
   `}
 `
 
@@ -90,7 +91,8 @@ export const MenuFull = styled.nav<MenuFullProps>`
     flex-direction: column;
     justify-content: space-between;
     background: ${theme.colors.white};
-    position: absolute;
+    position: fixed;
+    z-index: ${theme.layers.menu};
     top: 0;
     bottom: 0;
     left: 0;
@@ -124,7 +126,6 @@ export const MenuFull = styled.nav<MenuFullProps>`
       font-weight: ${theme.font.bold};
       font-size: ${theme.font.sizes.xlarge};
       margin-bottom: ${theme.spacings.small};
-      /* Ao abrir o menu faz um movimento de jogar a tela para cima */
       transform: ${isOpen ? 'translateY(0)' : 'translateY(3rem)'};
       transition: transform 0.3s ease-in-out;
     }
