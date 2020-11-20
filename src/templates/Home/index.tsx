@@ -14,25 +14,25 @@ import * as S from './styles'
 export type HomeTemplateProps = {
   banners: BannerProps[]
   newGames: GameCardProps[]
-  mostPopularHighligth: HighlightProps
+  mostPopularHighlight: HighlightProps
   mostPopularGames: GameCardProps[]
   upcommingGames: GameCardProps[]
-  upcommingHighligth: HighlightProps
+  upcommingHighlight: HighlightProps
   upcommingMoreGames: GameCardProps[]
   freeGames: GameCardProps[]
-  freeHighligth: HighlightProps
+  freeHighlight: HighlightProps
 }
 
 const Home = ({
   banners,
   newGames,
-  mostPopularHighligth,
+  mostPopularHighlight,
   mostPopularGames,
   upcommingGames,
-  upcommingHighligth,
+  upcommingHighlight,
   upcommingMoreGames,
   freeGames,
-  freeHighligth
+  freeHighlight
 }: HomeTemplateProps) => (
   <section>
     <Container>
@@ -57,7 +57,7 @@ const Home = ({
         <Heading lineLeft lineColor="secondary">
           Mais Populares
         </Heading>
-        <Highlight {...mostPopularHighligth} />
+        <Highlight {...mostPopularHighlight} />
         <GameCardSlider items={mostPopularGames} />
       </S.SectionMostPopular>
 
@@ -66,7 +66,7 @@ const Home = ({
           Em Breve
         </Heading>
         <GameCardSlider items={upcommingGames} />
-        <Highlight {...upcommingHighligth} />
+        <Highlight {...upcommingHighlight} />
         <GameCardSlider items={upcommingMoreGames} />
       </S.SectionUpcoming>
 
@@ -74,7 +74,7 @@ const Home = ({
         <Heading lineLeft lineColor="secondary">
           Jogos Gratuitos
         </Heading>
-        <Highlight {...freeHighligth} />
+        <Highlight {...freeHighlight} />
         <GameCardSlider items={freeGames} />
       </S.SectionFreeGames>
     </Container>
