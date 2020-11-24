@@ -3,10 +3,13 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import useEvent from '@testing-library/user-event'
 
 import Checkbox from '.'
+import userEvent from '@testing-library/user-event'
 
 describe('<Checkbox />', () => {
   it('should render with label', () => {
-    renderWithTheme(<Checkbox label="checkbox label" labelFor="check" />)
+    const { container } = renderWithTheme(
+      <Checkbox label="checkbox label" labelFor="check" />
+    )
 
     expect(screen.getByRole('checkbox')).toBeInTheDocument()
 
@@ -16,6 +19,8 @@ describe('<Checkbox />', () => {
     expect(screen.getByLabelText(/checkbox label/i)).toBeInTheDocument()
 
     expect(screen.getByText(/checkbox label/i)).toHaveAttribute('for', 'check')
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render without label', () => {
@@ -61,5 +66,18 @@ describe('<Checkbox />', () => {
     })
 
     expect(onCheck).toHaveBeenCalledWith(false)
+  })
+
+  it('should be acessible with tab', () => {
+    renderWithTheme(<Checkbox label="Checkbox" labelFor="Checkbox" />)
+
+    // Verifica se o focus está no body da página
+    expect(document.body).toHaveFocus()
+
+    // Executa um tab
+    userEvent.tab()
+
+    // Verifica se o focus está no elemento
+    expect(screen.getByLabelText(/checkbox/i)).toHaveFocus()
   })
 })
