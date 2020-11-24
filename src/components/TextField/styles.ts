@@ -21,7 +21,7 @@ export const Input = styled.input`
     color: ${theme.colors.black};
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.medium};
-    padding: ${theme.spacings.xxsmall} 0;
+    padding: ${theme.spacings.xxsmall};
     background: transparent;
     border: 0;
     outline: none;
@@ -34,6 +34,18 @@ export const Label = styled.label`
     font-size: ${theme.font.sizes.small};
     color: ${theme.colors.black};
     cursor: pointer;
+  `}
+`
+
+export const Icon = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 2.2rem;
+    color: ${theme.colors.gray};
+
+    & > svg {
+      width: 100%;
+    }
   `}
 `
 
