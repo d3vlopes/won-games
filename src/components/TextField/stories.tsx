@@ -9,6 +9,7 @@ export default {
   args: {
     label: 'E-mail',
     labelFor: 'Email',
+    icon: <Email />,
     id: 'Email',
     initialValue: '',
     placeholder: 'john.cage@gmail.com'
@@ -24,13 +25,3 @@ export const Default: Story<TextFieldProps> = (args) => (
     <TextField {...args} />
   </div>
 )
-
-export const withIcon: Story<TextFieldProps> = (args) => (
-  <div style={{ maxWidth: 300, padding: 15 }}>
-    <TextField {...args} />
-  </div>
-)
-
-withIcon.args = {
-  icon: <Email />
-}
