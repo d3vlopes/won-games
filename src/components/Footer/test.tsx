@@ -11,7 +11,7 @@ describe('<Footer />', () => {
     // links
     // endereço
 
-    renderWithTheme(<Footer />)
+    const { container } = renderWithTheme(<Footer />)
     expect(
       screen.getByRole('heading', { name: /contato/i })
     ).toBeInTheDocument()
@@ -22,5 +22,7 @@ describe('<Footer />', () => {
     expect(
       screen.getByRole('heading', { name: /endereço/i })
     ).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
