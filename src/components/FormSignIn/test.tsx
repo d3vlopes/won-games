@@ -4,9 +4,21 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import FormSignIn from '.'
 
 describe('<FormSignIn />', () => {
-  it('should render the heading', () => {
+  it('should render the form', () => {
     renderWithTheme(<FormSignIn />)
 
-    expect(screen.getByRole('heading', { name: /FormSignIn/i })).toBeInTheDocument()
+    // Verificar email
+
+    // Verificar password
+
+    // Verificar botão
+  })
+
+  it('should render the forgot password link', () => {
+    //
+  })
+
+  it('should render the text and link to sign up', () => {
+    //
   })
 })

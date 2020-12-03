@@ -6,4 +6,8 @@ export default {
   component: FormSignIn
 } as Meta
 
-export const Default: Story = () => <FormSignIn />
+export const Default: Story = () => (
+  <div style={{ width: 300, margin: 'auto' }}>
+    <FormSignIn />
+  </div>
+)
