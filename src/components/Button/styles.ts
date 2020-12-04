@@ -4,7 +4,7 @@ import { darken } from 'polished'
 import { ButtonProps } from '.'
 
 // Faz um union com as props do button
-type WrapperProps = {
+export type WrapperProps = {
   hasIcon: boolean
 } & Pick<ButtonProps, 'size' | 'fullWidth' | 'minimal'>
 

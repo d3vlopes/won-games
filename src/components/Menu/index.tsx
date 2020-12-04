@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useState } from 'react'
 import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
 import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart'
@@ -19,7 +20,7 @@ const Menu = ({ username }: MenuProps) => {
 
   return (
     <S.Wrapper>
-      {/* Quero que isso apareço só quando for menor que o tamanho medium */}
+      {/* Quero que isso apareça só quando for menor que o tamanho medium */}
       <MediaMatch lessThan="medium">
         <S.IconWrapper onClick={() => setIsOpen(true)}>
           <MenuIcon aria-label="Abrir Menu" />
@@ -46,7 +47,9 @@ const Menu = ({ username }: MenuProps) => {
         </S.IconWrapper>
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Button>Criar Conta</Button>
+            <Link href="/sign-in" passHref>
+              <Button as="a">Entrar</Button>
+            </Link>
           </MediaMatch>
         )}
       </S.MenuGroup>
@@ -70,13 +73,15 @@ const Menu = ({ username }: MenuProps) => {
         {/* Se não tiver */}
         {!username && (
           <S.RegisterBox>
-            <Button fullWidth size="large">
-              Entrar
-            </Button>
+            <Link href="/sign-in" passHref>
+              <Button fullWidth size="large" as="a">
+                Entrar
+              </Button>
+            </Link>
             <span>ou</span>
-            <S.CreateAccount href="#" title="Criar Conta">
-              Criar Conta
-            </S.CreateAccount>
+            <Link href="/sign-up" passHref>
+              <S.CreateAccount title="Criar Conta">Criar Conta</S.CreateAccount>
+            </Link>
           </S.RegisterBox>
         )}
       </S.MenuFull>
