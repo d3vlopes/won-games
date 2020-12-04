@@ -41,8 +41,8 @@ describe('<Menu />', () => {
     renderWithTheme(<Menu />)
     expect(screen.queryByText(/minha conta/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/favoritos/i)).not.toBeInTheDocument()
-    expect(screen.getByText(/entrar/i)).toBeInTheDocument()
-    expect(screen.getAllByText(/Criar conta/i)).toHaveLength(2)
+    expect(screen.getByText(/criar conta/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/entrar/i)).toHaveLength(2)
   })
 
   it('should show whishligth and account when logged in', () => {
