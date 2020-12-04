@@ -27,6 +27,7 @@ const wrapperModifiers = {
   lineLeft: (theme: DefaultTheme, lineColor: LineColors) => css`
     padding-left: ${theme.spacings.xxsmall};
     border-left: 0.7rem solid ${theme.colors[lineColor]};
+    margin-left: 1rem;
   `,
 
   lineBottom: (theme: DefaultTheme, lineColor: LineColors) => css`
