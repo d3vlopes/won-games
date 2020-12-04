@@ -7,10 +7,10 @@ describe('<FormSignUp />', () => {
   it('should render the form', () => {
     const { container } = renderWithTheme(<FormSignUp />)
 
-    expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/nome/i)).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('Confirm Password')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Senha')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Repita a senha')).toBeInTheDocument()
 
     expect(
       screen.getByRole('button', { name: /Criar Conta/i })

@@ -19,7 +19,7 @@ const FormSignIn = () => (
 
       <TextField
         name="password"
-        placeholder="Password"
+        placeholder="Senha"
         type="password"
         icon={<Lock />}
       />

@@ -204,7 +204,7 @@ exports[`<FormSignIn /> should render the form 1`] = `
             <input
               class="c5"
               name="password"
-              placeholder="Password"
+              placeholder="Senha"
               type="password"
               value=""
             />

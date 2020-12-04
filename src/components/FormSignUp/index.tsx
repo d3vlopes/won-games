@@ -10,7 +10,7 @@ const FormSignUp = () => (
     <form>
       <TextField
         name="name"
-        placeholder="Name"
+        placeholder="Nome"
         type="name"
         icon={<AccountCircle />}
       />
@@ -24,14 +24,14 @@ const FormSignUp = () => (
 
       <TextField
         name="password"
-        placeholder="Password"
+        placeholder="Senha"
         type="password"
         icon={<Lock />}
       />
 
       <TextField
         name="confirm-password"
-        placeholder="Confirm Password"
+        placeholder="Repita a senha"
         type="confirm-password"
         icon={<Lock />}
       />

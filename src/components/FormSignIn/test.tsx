@@ -11,7 +11,7 @@ describe('<FormSignIn />', () => {
     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
 
     // Verificar password
-    expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/senha/i)).toBeInTheDocument()
 
     // Verificar botão
     expect(screen.getByRole('button', { name: /entrar/i })).toBeInTheDocument()
