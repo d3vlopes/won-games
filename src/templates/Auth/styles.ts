@@ -48,6 +48,12 @@ export const BannerContent = styled.div`
     position: relative;
     height: 100%;
     z-index: ${theme.layers.base};
+
+    a {
+      // Faz o link ficar somente dentro do elemento
+      width: fit-content;
+      height: fit-content;
+    }
   `}
 `
 
