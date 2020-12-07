@@ -273,9 +273,7 @@ exports[`<Footer /> should render 4 topics 1`] = `
   <div
     class="c6"
   >
-    Won Games
-    <br />
-    2020 © Todos os direitos reservados.
+    Won Games 2020 © Todos os direitos reservados.
   </div>
 </footer>
 `;
