@@ -8,6 +8,7 @@ import Heading from 'components/Heading'
 import Menu from 'components/Menu'
 import GameCardSlider from 'components/GameCardSlider'
 import BannerSlider from 'components/BannerSlider'
+import Showcase from 'components/Showcase'
 
 import * as S from './styles'
 
@@ -44,40 +45,24 @@ const Home = ({
 
     <S.SectionNews>
       <Container>
-        <Heading lineLeft lineColor="secondary">
-          Novidades
-        </Heading>
-
-        <GameCardSlider items={newGames} color="black" />
+        <Showcase title="Novidades" games={newGames} />
       </Container>
     </S.SectionNews>
 
-    <Container>
-      <S.SectionMostPopular>
-        <Heading lineLeft lineColor="secondary">
-          Mais Populares
-        </Heading>
-        <Highlight {...mostPopularHighlight} />
-        <GameCardSlider items={mostPopularGames} />
-      </S.SectionMostPopular>
+    <Showcase
+      title="Mais Populares"
+      highlight={mostPopularHighlight}
+      games={mostPopularGames}
+    />
 
-      <S.SectionUpcoming>
-        <Heading lineLeft lineColor="secondary">
-          Em Breve
-        </Heading>
-        <GameCardSlider items={upcommingGames} />
-        <Highlight {...upcommingHighlight} />
-        <GameCardSlider items={upcommingMoreGames} />
-      </S.SectionUpcoming>
+    <Showcase title="Em Breve" games={upcommingGames} />
+    <Showcase highlight={upcommingHighlight} games={upcommingMoreGames} />
 
-      <S.SectionFreeGames>
-        <Heading lineLeft lineColor="secondary">
-          Jogos Gratuitos
-        </Heading>
-        <Highlight {...freeHighlight} />
-        <GameCardSlider items={freeGames} />
-      </S.SectionFreeGames>
-    </Container>
+    <Showcase
+      title="Jogos Gratuitos"
+      highlight={freeHighlight}
+      games={freeGames}
+    />
 
     <S.SectionFooter>
       <Container>
