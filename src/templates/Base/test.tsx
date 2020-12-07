@@ -3,10 +3,36 @@ import { renderWithTheme } from 'utils/tests/helpers'
 
 import Base from '.'
 
-describe('<Base />', () => {
-  it('should render the heading', () => {
-    renderWithTheme(<Base />)
+jest.mock('components/Menu', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Menu"></div>
+    }
+  }
+})
 
-    expect(screen.getByRole('heading', { name: /Base/i })).toBeInTheDocument()
+jest.mock('components/Footer', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Footer"></div>
+    }
+  }
+})
+
+describe('<Base />', () => {
+  it('should render menu, footer and children', () => {
+    renderWithTheme(
+      <Base>
+        <h1>Heading</h1>
+      </Base>
+    )
+
+    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument()
+    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /heading/i })
+    ).toBeInTheDocument()
   })
 })
