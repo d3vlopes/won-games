@@ -20,39 +20,56 @@ const props = {
   freeHighlight: highlightMock
 }
 
+jest.mock('components/Menu', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Menu"></div>
+    }
+  }
+})
+
+jest.mock('components/Footer', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Footer"></div>
+    }
+  }
+})
+
+jest.mock('components/Showcase', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Showcase"></div>
+    }
+  }
+})
+
+jest.mock('components/BannerSlider', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Banner Slider"></div>
+    }
+  }
+})
+
 describe('<Home />', () => {
   it('should render menu and footer', () => {
     renderWithTheme(<Home {...props} />)
 
-    // menu
-    expect(screen.getByLabelText(/abrir menu/i)).toBeInTheDocument()
-
-    // footer
-    expect(
-      screen.getByRole('heading', { name: /siga-nos/i })
-    ).toBeInTheDocument()
-
-    // logo(menu/footer)
-    expect(screen.getAllByRole('img', { name: /won games/i })).toHaveLength(2)
-
-    expect(
-      screen.getByRole('heading', { name: /novidades/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /mais populares/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /em breve/i })
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', { name: /jogos gratuitos/i })
-    ).toBeInTheDocument()
+    // Verifica se o menu foi renderizado
+    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument()
 
     // banner
-    expect(screen.getAllByText(/defy death 1/i)).toHaveLength(1)
-    // card game ( 5 sections com 1 cards cada = 5x1 = 5)
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
-    // highlight
-    expect(screen.getAllByText(/read dead is back!/i)).toHaveLength(3)
+    expect(screen.getByTestId('Mock Banner Slider')).toBeInTheDocument()
+
+    // Verifica se o número de Showcase renderizado está correto
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5)
+
+    // Verifica se o footer foi renderizado
+    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument()
   })
 })
