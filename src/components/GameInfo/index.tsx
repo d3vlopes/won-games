@@ -24,7 +24,7 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
 
     <S.ButtonsWrapper>
       <Button size="large" icon={<AddShoppingCart />}>
-        Adicionar ao carrinho
+        Adicionar
       </Button>
 
       <Button icon={<HeartOutline />} size="large" minimal>
