@@ -1,8 +1,46 @@
+import Heading from 'components/Heading'
+import MediaMatch from 'components/MediaMatch'
+
 import * as S from './styles'
 
 const GameDetails = () => (
   <S.Wrapper>
-    <h1>GameDetails</h1>
+    <MediaMatch greaterThan="small">
+      <Heading lineColor="secondary" lineLeft>
+        Game Details
+      </Heading>
+    </MediaMatch>
+
+    <S.Content>
+      <S.Block>
+        <S.Label>Desenvolvedora</S.Label>
+        <S.Description>Gearbox Software</S.Description>
+      </S.Block>
+
+      <S.Block>
+        <S.Label>Data de Lançamento</S.Label>
+        <S.Description>Nov 16, 2019</S.Description>
+      </S.Block>
+
+      <S.Block>
+        <S.Label>Plataformas</S.Label>
+      </S.Block>
+
+      <S.Block>
+        <S.Label>Distribuidora</S.Label>
+        <S.Description>2K</S.Description>
+      </S.Block>
+
+      <S.Block>
+        <S.Label>Classificação</S.Label>
+        <S.Description>18+</S.Description>
+      </S.Block>
+
+      <S.Block>
+        <S.Label>Gênero</S.Label>
+        <S.Description>Ação / Aventura</S.Description>
+      </S.Block>
+    </S.Content>
   </S.Wrapper>
 )
 
