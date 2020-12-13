@@ -16,13 +16,15 @@ export type GameDetailsProps = {
   platforms: Platform[]
   releaseDate: string
   rating: Rating
+  genres: string[]
 }
 
 const GameDetails = ({
   developer,
   releaseDate,
   platforms,
-  rating
+  rating,
+  genres
 }: GameDetailsProps) => {
   const platformIcons = {
     linux: <Linux title="Linux" size={18} />,
@@ -69,13 +71,13 @@ const GameDetails = ({
         <S.Block>
           <S.Label>Classificação</S.Label>
           <S.Description>
-            {rating == 'BR0' ? 'Gratuito' : `${rating.replace('BR', '')}+`}
+            {rating == 'BR0' ? 'FREE' : `${rating.replace('BR', '')}+`}
           </S.Description>
         </S.Block>
 
         <S.Block>
           <S.Label>Gênero</S.Label>
-          <S.Description>Ação / Aventura</S.Description>
+          <S.Description>{genres.join(' / ')}</S.Description>
         </S.Block>
       </S.Content>
     </S.Wrapper>
