@@ -13,10 +13,26 @@ export default {
   },
   args: mock,
   argTypes: {
+    releaseDate: {
+      control: {
+        type: 'select',
+        options: [
+          '2020-11-21T23:00:00',
+          '2020-10-28T23:00:00',
+          '2020-09-05T23:00:00'
+        ]
+      }
+    },
     platforms: {
       control: {
         type: 'inline-check',
         options: ['windows', 'linux', 'mac']
+      }
+    },
+    genres: {
+      control: {
+        type: 'inline-check',
+        options: ['Role-playing', 'Narrative']
       }
     }
   }
