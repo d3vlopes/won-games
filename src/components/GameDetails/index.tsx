@@ -1,4 +1,6 @@
 import { Apple, Windows, Linux } from '@styled-icons/fa-brands'
+import { parseISO, format } from 'date-fns'
+import pt from 'date-fns/locale/pt'
 
 import Heading from 'components/Heading'
 import MediaMatch from 'components/MediaMatch'
@@ -24,6 +26,9 @@ const GameDetails = ({
     windows: <Windows title="Windows" size={18} />
   }
 
+  const date = parseISO(releaseDate)
+  const dateConvert = format(date, "d 'de' MMM'. ' 'de' yyyy", { locale: pt })
+
   return (
     <S.Wrapper>
       <MediaMatch greaterThan="small">
@@ -40,13 +45,7 @@ const GameDetails = ({
 
         <S.Block>
           <S.Label>Data de Lançamento</S.Label>
-          <S.Description>
-            {new Intl.DateTimeFormat('pt-BR', {
-              day: 'numeric',
-              month: 'short',
-              year: 'numeric'
-            }).format(new Date(releaseDate))}
-          </S.Description>
+          <S.Description>{dateConvert}</S.Description>
         </S.Block>
 
         <S.Block>
