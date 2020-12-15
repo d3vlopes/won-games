@@ -36,4 +36,22 @@ describe('<Gallery />', () => {
     expect(modal.getAttribute('aria-hidden')).toBe('false')
     expect(modal).toHaveStyle({ opacity: 1 })
   })
+
+  it('should handle close modal when overlay or button clicked', () => {
+    renderWithTheme(<Gallery items={mockItems.slice(0, 2)} />)
+
+    // seleciona o modal
+    const modal = screen.getByLabelText('modal')
+
+    // verifica se ao clicar na imagem abre o modal
+    fireEvent.click(
+      screen.getByRole('button', { name: /Thumb - Gallery Image 1/i })
+    )
+
+    // verifica se ao clicar para fechar o modal é fechado
+    fireEvent.click(screen.getByRole('button', { name: /fechar modal/i }))
+
+    expect(modal.getAttribute('aria-hidden')).toBe('true')
+    expect(modal).toHaveStyle({ opacity: 0 })
+  })
 })
