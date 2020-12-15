@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
 import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
@@ -54,6 +54,19 @@ export type GalleryProps = {
 
 const Gallery = ({ items }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const handleKeyUp = ({ key }: KeyboardEvent) => {
+      // quando a tecla ESC for precisionad set o isOpen
+      key === 'Escape' && setIsOpen(false)
+    }
+
+    // Executa sempre que uma tecla for clicada
+    window.addEventListener('keyup', handleKeyUp)
+
+    // Executa algo ao desmontar o componente
+    return () => window.removeEventListener('keyup', handleKeyUp)
+  }, [])
 
   return (
     <S.Wrapper>
