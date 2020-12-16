@@ -10,7 +10,7 @@ export default function Index(props: HomeTemplateProps) {
 
 // getStaticProps => gera um estático em build time
 // getServerSideProps => gera via ssr a cada request(não é possivel exportar os aquivos)
-// getInitialProps => Mesma coisa que o getServerSideProps
+// getInitialProps => Mesma coisa que o getServerSideProps, não tão utilizado ultimamente
 export function getServerSideProps() {
   // faz a lógica
 
