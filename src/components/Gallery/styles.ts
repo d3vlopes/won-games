@@ -52,6 +52,7 @@ const modalModifiers = {
   open: () => css`
     opacity: 1;
   `,
+
   close: () => css`
     opacity: 0;
     pointer-events: none;
@@ -88,4 +89,9 @@ export const Close = styled.div`
     height: 100%;
     text-align: right;
   `}
+`
+
+export const Content = styled.div`
+  max-width: min(120rem, 100%);
+  max-height: 80rem;
 `
