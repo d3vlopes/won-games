@@ -1,8 +1,23 @@
 import * as S from './styles'
 
-const GameItem = () => (
+export type GameItemProps = {
+  img: string
+  title: string
+  price: string
+}
+
+const GameItem = ({ img, title, price }: GameItemProps) => (
   <S.Wrapper>
-    <h1>GameItem</h1>
+    <S.GameContent>
+      <S.ImageBox>
+        <img src={img} alt={title} />
+      </S.ImageBox>
+
+      <S.Content>
+        <S.Title>{title}</S.Title>
+        <S.Price>{price}</S.Price>
+      </S.Content>
+    </S.GameContent>
   </S.Wrapper>
 )
 
