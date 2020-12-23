@@ -31,4 +31,22 @@ describe('<Wishlist />', () => {
     expect(screen.getAllByText(/population zero/i)).toHaveLength(6)
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
   })
+
+  // Verifica se a lista de desejor for vazia mostra o componente Empty
+  it('should render empty when there are no games', () => {
+    renderWithTheme(
+      <Wishlist
+        recommendedGames={gamesMock}
+        recommendedHighlight={highlightMock}
+      />
+    )
+
+    // Verifica se o nome do jogo não aparece
+    expect(screen.queryByText(/population zero/i)).not.toBeInTheDocument()
+
+    // Verifica se o heading do componente Empty é renderizado
+    expect(
+      screen.getByRole('heading', { name: /Sua lista de desejos está vazia/i })
+    ).toBeInTheDocument()
+  })
 })
