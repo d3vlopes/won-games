@@ -26,4 +26,14 @@ describe('<GameItem />', () => {
     // Verifica se o price foi renderizado
     expect(screen.getByText('R$ 215,00')).toBeInTheDocument()
   })
+
+  it('should render the in item with download link', () => {
+    const downloadLink = 'https://link'
+
+    renderWithTheme(<GameItem {...props} downloadLink={downloadLink} />)
+
+    expect(
+      screen.getByRole('link', { name: `Pegar ${props.title} aqui` })
+    ).toHaveAttribute('href', downloadLink)
+  })
 })
