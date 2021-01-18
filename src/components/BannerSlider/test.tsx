@@ -23,7 +23,7 @@ const items = [
 ]
 
 describe('<BannerSlider />', () => {
-  it('should render the heading', () => {
+  it('should render vertical slider', () => {
     const { container } = renderWithTheme(<BannerSlider items={items} />)
 
     expect(container.querySelector('.slick-vertical')).toBeInTheDocument()
