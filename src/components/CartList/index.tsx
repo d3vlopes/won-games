@@ -1,8 +1,21 @@
+import GameItem, { GameItemProps } from 'components/GameItem'
+
 import * as S from './styles'
 
-const CardList = () => (
+export type CartListProps = {
+  items: GameItemProps[]
+  total: string
+}
+
+const CardList = ({ items, total }: CartListProps) => (
   <S.Wrapper>
-    <h1>CardList</h1>
+    {items.map((item) => (
+      <GameItem key={item.title} {...item} />
+    ))}
+
+    <S.Footer>
+      Total <S.Total>{total}</S.Total>
+    </S.Footer>
   </S.Wrapper>
 )
 
