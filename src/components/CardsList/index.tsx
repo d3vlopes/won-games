@@ -1,9 +1,25 @@
+import Heading from 'components/Heading'
+import { PaymentCard } from 'components/PaymentOptions'
+
 import * as S from './styles'
 
-const CardsList = () => (
-  <S.Wrapper>
-    <h1>CardsList</h1>
-  </S.Wrapper>
+export type CardListProps = {
+  cards?: PaymentCard[]
+}
+
+const CardsList = ({ cards }: CardListProps) => (
+  <>
+    <Heading lineBottom color="black" size="small">
+      Meus cartões
+    </Heading>
+
+    {cards?.map((card) => (
+      <S.Card key={card.number}>
+        <img src={card.img} alt={card.flag} />
+        <span>{card.number}</span>
+      </S.Card>
+    ))}
+  </>
 )
 
 export default CardsList
