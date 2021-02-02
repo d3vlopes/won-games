@@ -2,10 +2,11 @@ import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import ExploreSidebar from '.'
+import items from './mock'
 
 describe('<ExploreSidebar />', () => {
   it('should render headings', () => {
-    renderWithTheme(<ExploreSidebar />)
+    renderWithTheme(<ExploreSidebar items={items} />)
 
     expect(screen.getByRole('heading', { name: /preço/i })).toBeInTheDocument()
     expect(
@@ -18,7 +19,7 @@ describe('<ExploreSidebar />', () => {
   })
 
   it('should render inputs', () => {
-    renderWithTheme(<ExploreSidebar />)
+    renderWithTheme(<ExploreSidebar items={items} />)
 
     expect(
       screen.getByRole('checkbox', { name: /under \$50/i })
@@ -30,7 +31,7 @@ describe('<ExploreSidebar />', () => {
   })
 
   it('should render the filter button', () => {
-    renderWithTheme(<ExploreSidebar />)
+    renderWithTheme(<ExploreSidebar items={items} />)
 
     expect(screen.getByRole('button', { name: /filtrar/i })).toBeInTheDocument()
   })
