@@ -5,19 +5,19 @@ export default [
     type: 'checkbox',
     fields: [
       {
-        label: 'Under $50',
+        label: 'Menos de R$50',
         name: 'under-50'
       },
       {
-        label: 'Under $100',
+        label: 'Menos de R$100',
         name: 'under-100'
       },
       {
-        label: 'Under $150',
+        label: 'Menos de R$150',
         name: 'under-150'
       },
       {
-        label: 'Under $200',
+        label: 'Menos de R$200',
         name: 'under-200'
       },
       {
