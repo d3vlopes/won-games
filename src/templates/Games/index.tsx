@@ -1,9 +1,15 @@
+import { GameCardProps } from 'components/GameCard'
 import * as S from './styles'
 
-const Games = () => (
+export type GamesTemplateProps = {
+  games?: GameCardProps[]
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const GamesTemplate = ({ games = [] }: GamesTemplateProps) => (
   <S.Wrapper>
-    <h1>Games</h1>
+    <h1>GamesTemplate</h1>
   </S.Wrapper>
 )
 
-export default Games
+export default GamesTemplate
