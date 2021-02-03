@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
-
 import ExploreSidebar, { ExploreSidebarProps } from '.'
+
 import items from './mock'
 
 export default {
@@ -9,7 +9,11 @@ export default {
   args: {
     items
   },
+  argTypes: {
+    onFilter: { action: 'clicked' }
+  },
   parameters: {
+    layout: 'fullscreen',
     backgrounds: {
       default: 'won-dark'
     }
@@ -17,12 +21,16 @@ export default {
 } as Meta
 
 export const Default: Story<ExploreSidebarProps> = (args) => (
-  <ExploreSidebar {...args} />
+  <div style={{ padding: 16, maxWidth: 320 }}>
+    <ExploreSidebar {...args} />
+  </div>
 )
 
 export const WithInitialValues: Story<ExploreSidebarProps> = (args) => (
-  <ExploreSidebar
-    {...args}
-    initialValues={{ windows: true, sort_by: 'low-to-high' }}
-  />
+  <div style={{ padding: 16, maxWidth: 320 }}>
+    <ExploreSidebar
+      {...args}
+      initialValues={{ windows: true, sort_by: 'low-to-high' }}
+    />
+  </div>
 )
