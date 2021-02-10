@@ -7,7 +7,7 @@ describe('<CartIcon />', () => {
   it('should render without badge', () => {
     renderWithTheme(<CartIcon />)
 
-    expect(screen.getByLabelText(/carrinho/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/carrinho de comprar/i)).toBeInTheDocument()
     expect(
       screen.queryByLabelText(/items do carrinho/i)
     ).not.toBeInTheDocument()
