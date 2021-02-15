@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
-import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart'
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 
 import Button from 'components/Button'
 import Logo from 'components/Logo'
 import MediaMatch from 'components/MediaMatch'
+import CartDropdown from 'components/CartDropdown'
+import CartIcon from 'components/CartIcon'
+import UserDropdown from 'components/UserDropdown'
 
 import * as S from './styles'
 
@@ -40,7 +42,9 @@ const Menu = ({ username }: MenuProps) => {
           <Link href="/" passHref>
             <S.MenuLink href="#">Home</S.MenuLink>
           </Link>
-          <S.MenuLink href="#">Explorar</S.MenuLink>
+          <Link href="/games" passHref>
+            <S.MenuLink href="#">Explorar</S.MenuLink>
+          </Link>
         </S.MenuNav>
       </MediaMatch>
 
@@ -49,15 +53,26 @@ const Menu = ({ username }: MenuProps) => {
           <SearchIcon aria-label="Pesquisar" />
         </S.IconWrapper>
         <S.IconWrapper>
-          <ShoppingCartIcon aria-label="Abrir Carrinho" />
-        </S.IconWrapper>
-        {!username && (
           <MediaMatch greaterThan="medium">
+            <CartDropdown />
+          </MediaMatch>
+          <MediaMatch lessThan="medium">
+            <Link href="/cart">
+              <a>
+                <CartIcon />
+              </a>
+            </Link>
+          </MediaMatch>
+        </S.IconWrapper>
+        <MediaMatch greaterThan="medium">
+          {!username ? (
             <Link href="/sign-in" passHref>
               <Button as="a">Entrar</Button>
             </Link>
-          </MediaMatch>
-        )}
+          ) : (
+            <UserDropdown username={username} />
+          )}
+        </MediaMatch>
       </S.MenuGroup>
 
       {/* Menu mobile */}
@@ -65,15 +80,21 @@ const Menu = ({ username }: MenuProps) => {
         <CloseIcon aria-label="Fechar Menu" onClick={() => setIsOpen(false)} />
         <S.MenuNav>
           <Link href="/" passHref>
-            <S.MenuLink href="#">Home</S.MenuLink>
+            <S.MenuLink>Home</S.MenuLink>
           </Link>
-          <S.MenuLink href="#">Explorar</S.MenuLink>
+          <Link href="/games" passHref>
+            <S.MenuLink>Explorar</S.MenuLink>
+          </Link>
 
           {/* Se tiver */}
           {!!username && (
             <>
-              <S.MenuLink href="#">Minha Conta</S.MenuLink>
-              <S.MenuLink href="#">Favoritos</S.MenuLink>
+              <Link href="/profile/me" passHref>
+                <S.MenuLink>Meu Perfil</S.MenuLink>
+              </Link>
+              <Link href="profile/wishlist" passHref>
+                <S.MenuLink>Favoritos</S.MenuLink>
+              </Link>
             </>
           )}
         </S.MenuNav>

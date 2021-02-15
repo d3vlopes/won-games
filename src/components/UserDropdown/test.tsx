@@ -17,7 +17,9 @@ describe('<UserDropdown />', () => {
     // open menu
     userEvent.click(screen.getByText(/leandro/i))
 
-    expect(screen.getByRole('link', { name: /perfil/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: /meu perfil/i })
+    ).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /favoritos/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /sair/i })).toBeInTheDocument()
   })

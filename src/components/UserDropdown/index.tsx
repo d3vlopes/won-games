@@ -28,7 +28,7 @@ const UserDropdown = ({ username }: UserDropdownProps) => (
       <Link href="/profile/me" passHref>
         <S.Link>
           <AccountCircle />
-          <span>Perfil</span>
+          <span>Meu perfil</span>
         </S.Link>
       </Link>
       <Link href="/wishlist" passHref>
