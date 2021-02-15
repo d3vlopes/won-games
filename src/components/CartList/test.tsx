@@ -23,4 +23,11 @@ describe('<CardList />', () => {
 
     expect(screen.getByText(/finalizar compra/i)).toBeInTheDocument()
   })
+
+  it('should render empty if there are no games', () => {
+    renderWithTheme(<CardList />)
+
+    expect(screen.getByText(/seu carrinho está vazio/i)).toBeInTheDocument()
+    expect(screen.queryByText(/total/i)).not.toBeInTheDocument()
+  })
 })
