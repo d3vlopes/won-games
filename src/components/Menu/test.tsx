@@ -10,7 +10,7 @@ describe('<Menu />', () => {
     // Testa os arial-labels
     expect(screen.getByLabelText(/abrir menu/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/pesquisar/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/abrir carrinho/i)).toBeInTheDocument()
+    expect(screen.getAllByLabelText(/carrinho/i)).toHaveLength(2)
 
     expect(screen.getByRole('img', { name: /won games/i })).toBeInTheDocument()
   })
@@ -39,7 +39,7 @@ describe('<Menu />', () => {
   // Verifica se os textos aparecem quando não está logado
   it('should show register box when logged out', () => {
     renderWithTheme(<Menu />)
-    expect(screen.queryByText(/minha conta/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/meu perfil/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/favoritos/i)).not.toBeInTheDocument()
     expect(screen.getByText(/criar conta/i)).toBeInTheDocument()
     expect(screen.getAllByText(/entrar/i)).toHaveLength(2)
@@ -47,8 +47,8 @@ describe('<Menu />', () => {
 
   it('should show whishligth and account when logged in', () => {
     renderWithTheme(<Menu username="lopes" />)
-    expect(screen.getByText(/minha conta/i)).toBeInTheDocument()
-    expect(screen.getByText(/favoritos/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/meu perfil/i)).toHaveLength(2)
+    expect(screen.getAllByText(/favoritos/i)).toHaveLength(2)
     expect(screen.queryByText(/entrar/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/criar conta/i)).not.toBeInTheDocument()
   })
