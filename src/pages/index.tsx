@@ -1,24 +1,22 @@
-import { gql, useQuery } from '@apollo/client'
+import { gql } from '@apollo/client'
+import { initializeApollo } from 'utils/apollo'
+
 import Home, { HomeTemplateProps } from 'templates/Home'
 
 import bannerMock from 'components/BannerSlider/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
 
-export default function Index(props: HomeTemplateProps) {
-  const { data, loading, error } = useQuery(gql`
-    query getGames {
-      games {
-        name
-      }
+const GET_GAMES = gql`
+  query getGames {
+    games {
+      name
     }
-  `)
+  }
+`
 
-  if (loading) return <p>Carregando...</p>
-
-  if (error) return <p>{error}</p>
-
-  if (data) return <p>{JSON.stringify(data, null, 2)}</p>
+export default function Index(props: HomeTemplateProps) {
+  if (props.data) return <p>{JSON.stringify(props.data, null, 2)}</p>
 
   return <Home {...props} />
 }
@@ -26,12 +24,16 @@ export default function Index(props: HomeTemplateProps) {
 // getStaticProps => gera um estático em build time
 // getServerSideProps => gera via ssr a cada request(não é possivel exportar os aquivos)
 // getInitialProps => Mesma coisa que o getServerSideProps, não tão utilizado ultimamente
-export function getServerSideProps() {
-  // faz a lógica
+export async function getServerSideProps() {
+  const apolloClient = initializeApollo()
+
+  const { data } = await apolloClient.query({ query: GET_GAMES })
 
   // retorna os dados
   return {
     props: {
+      data: data,
+      initialApolloState: apolloClient.cache.extract(),
       banners: bannerMock,
       newGames: gamesMock,
       mostPopularHighlight: highlightMock,
