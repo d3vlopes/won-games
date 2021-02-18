@@ -19,7 +19,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      // Recria a página dentro do tempo passado
+      // Recria a página dentro do tempo passado em segundos
       revalidate: 60,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       games: data.games.map((game: any) => ({
