@@ -22,7 +22,7 @@ describe('<GameInfo />', () => {
     expect(screen.getByText(props.description)).toBeInTheDocument()
 
     // Verifica o price
-    expect(screen.getByText(/r\$210,00/i)).toBeInTheDocument()
+    expect(screen.getByText(/210,00/i)).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
   })
