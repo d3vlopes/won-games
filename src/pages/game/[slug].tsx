@@ -61,13 +61,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cover: `http://localhost:1337${game.cover?.src}`,
       gameInfo: {
         title: game.name,
-        price: new Intl.NumberFormat('pt-BR', {
-          style: 'currency',
-          currency: 'BRL'
-        }).format(game.price),
+        price: game.price,
         description: game.short_description
       },
-      gallery: game.gallery,
+      gallery: game.gallery.map((image) => ({
+        src: `http://localhost:1337${image.src}`,
+        label: image.label
+      })),
       description: game.description,
       details: {
         developer: game.developers[0].name,
