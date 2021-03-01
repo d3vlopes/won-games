@@ -10,7 +10,7 @@ const props = {
   title: 'Population Zero',
   developer: 'Rockstar Games',
   img: 'https://source.unsplash.com/user/willianjusten/300x140',
-  price: 'R$ 235,00'
+  price: 235
 }
 
 describe('<GameCard />', () => {
@@ -59,7 +59,7 @@ describe('<GameCard />', () => {
 
   it('should render a line-through in price when promotional ', () => {
     // renderizar o componente (COm promotionalPrice) 200 reaus 15 reais
-    renderWithTheme(<GameCard {...props} promotionalPrice="R$ 200,00" />)
+    renderWithTheme(<GameCard {...props} promotionalPrice={200} />)
 
     // preço veho com line-through
     expect(screen.getByText('R$ 235,00')).toHaveStyle({
