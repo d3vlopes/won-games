@@ -37,7 +37,7 @@ describe('<GameInfo />', () => {
 
     // Verifica o button wishlist
     expect(
-      screen.getByRole('button', { name: /favoritos/i })
+      screen.getByRole('button', { name: /favorito/i })
     ).toBeInTheDocument()
   })
 })

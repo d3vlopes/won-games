@@ -296,7 +296,7 @@ exports[`<GameInfo /> should render game informations 1`] = `
         </g>
       </svg>
       <span>
-        Favoritos
+        Favorito
       </span>
     </button>
   </div>

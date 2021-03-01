@@ -1,5 +1,8 @@
 import { AddShoppingCart } from '@styled-icons/material/AddShoppingCart'
 import { HeartOutline } from '@styled-icons/evaicons-outline/HeartOutline'
+
+import formatPrice from 'utils/format-price'
+
 import Heading from 'components/Heading'
 import Ribbon from 'components/Ribbon'
 import Button from 'components/Button'
@@ -18,12 +21,7 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
       {title}
     </Heading>
 
-    <Ribbon color="secondary">
-      {new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      }).format(price)}
-    </Ribbon>
+    <Ribbon color="secondary">{formatPrice(price)}</Ribbon>
 
     <S.Description>{description}</S.Description>
 
@@ -33,7 +31,7 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
       </Button>
 
       <Button icon={<HeartOutline />} size="large" minimal>
-        Favoritos
+        Favorito
       </Button>
     </S.ButtonsWrapper>
   </S.Wrapper>
