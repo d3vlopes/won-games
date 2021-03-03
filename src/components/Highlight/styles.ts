@@ -37,6 +37,7 @@ export const Wrapper = styled.section<WrapperProps>`
     background-size: cover;
     height: 23rem;
     display: grid;
+    margin-bottom: 2.4rem;
 
     &::after {
       content: '';
@@ -58,7 +59,7 @@ export const FloatImage = styled.img`
   ${({ theme }) => css`
     grid-area: floatimage;
     z-index: ${theme.layers.base};
-    max-height: 23rem;
+    max-height: 30rem;
     max-width: 100%;
     align-self: end;
 
