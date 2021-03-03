@@ -15,7 +15,6 @@ const props = {
   mostPopularGames: [gamesMock[0]],
   upcommingGames: [gamesMock[0]],
   upcommingHighlight: highlightMock,
-  upcommingMoreGames: [gamesMock[0]],
   freeGames: [gamesMock[0]],
   freeHighlight: highlightMock
 }
@@ -46,6 +45,6 @@ describe('<Home />', () => {
     expect(screen.getByTestId('Mock Banner Slider')).toBeInTheDocument()
 
     // Verifica se o número de Showcase renderizado está correto
-    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5)
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(4)
   })
 })
