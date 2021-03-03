@@ -71,6 +71,12 @@ describe('<GameCard />', () => {
     })
   })
 
+  it('should render FREE on the label when the price is 0', () => {
+    renderWithTheme(<GameCard {...props} price={0} />)
+
+    expect(screen.getByText('FREE')).toBeInTheDocument()
+  })
+
   it('should render a filled Favorite icon when favorite is true ', () => {
     renderWithTheme(<GameCard {...props} favorite />)
 
