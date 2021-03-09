@@ -1,10 +1,8 @@
 import { useRouter } from 'next/router'
+import { GetStaticProps } from 'next'
+
 import { initializeApollo } from 'utils/apollo'
-
-import Game, { GameTemplateProps } from 'templates/Game'
-
-import gamesMock from 'components/GameCardSlider/mock'
-import highlightMock from 'components/Highlight/mock'
+import { gamesMapper } from 'utils/mappers'
 
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
 import { QueryGames, QueryGamesVariables } from 'graphql/generate/QueryGames'
@@ -12,7 +10,13 @@ import {
   QueryGameBySlug,
   QueryGameBySlugVariables
 } from 'graphql/generate/QueryGameBySlug'
-import { GetStaticProps } from 'next'
+import { QueryRecommended } from 'graphql/generate/QueryRecommended'
+import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
+
+import Game, { GameTemplateProps } from 'templates/Game'
+
+import gamesMock from 'components/GameCardSlider/mock'
+import highlightMock from 'components/Highlight/mock'
 
 const apolloClient = initializeApollo()
 
@@ -55,6 +59,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const game = data.games[0]
 
+  const { data: section } = await apolloClient.query<QueryRecommended>({
+    query: QUERY_RECOMMENDED
+  })
+
   return {
     props: {
       revalidate: 60,
@@ -79,7 +87,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
       upcoming: gamesMock,
       upcomingHighlight: highlightMock,
-      recommendedGames: gamesMock
+      recommendedTitle: section.recommended?.section?.title,
+      recommendedGames: gamesMapper(section.recommended?.section?.games)
     }
   }
 }
