@@ -18,6 +18,7 @@ const props: GameTemplateProps = {
   description: `<h1>Custom HTML</h1>`,
   details: gameDetailsMock as GameDetailsProps,
   upcomingGames: gamesMock,
+  upcomingTitle: 'Em breve',
   upcomingHighlight: highlightMock,
   recommendedGames: gamesMock
 }
