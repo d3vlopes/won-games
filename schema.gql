@@ -934,7 +934,7 @@ type ComponentPagePopularGames {
   """"""
   id: ID!
   """"""
-  title: String!
+  title: String
   """"""
   highlight: ComponentPageHighlight
   """"""
@@ -2503,7 +2503,7 @@ input ComponentPageHighlightInput {
 """"""
 input ComponentPagePopularGameInput {
   """"""
-  title: String!
+  title: String
   """"""
   highlight: ComponentPageHighlightInput
   """"""
