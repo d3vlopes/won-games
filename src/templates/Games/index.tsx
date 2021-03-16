@@ -10,8 +10,9 @@ import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
 import Base from 'templates/Base'
 
 import Loading from 'components/Loading'
-import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import GameCard from 'components/GameCard'
+import Empty from 'components/Empty'
+import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import { Grid } from 'components/Grid'
 
 import * as S from './styles'
@@ -61,23 +62,32 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           <Loading color="primary" size={4.8} />
         ) : (
           <section>
-            <Grid>
-              {data?.games.map((game) => (
-                <GameCard
-                  key={game.slug}
-                  title={game.name}
-                  slug={game.slug}
-                  developer={game.developers[0].name}
-                  img={`http://localhost:1337${game.cover!.url}`}
-                  price={game.price}
-                />
-              ))}
-            </Grid>
+            {data?.games.length ? (
+              <>
+                <Grid>
+                  {data?.games.map((game) => (
+                    <GameCard
+                      key={game.slug}
+                      title={game.name}
+                      slug={game.slug}
+                      developer={game.developers[0].name}
+                      img={`http://localhost:1337${game.cover!.url}`}
+                      price={game.price}
+                    />
+                  ))}
+                </Grid>
 
-            <S.ShowMore role="button" onClick={handleShowMore}>
-              <p>Mostrar Mais</p>
-              <ArrowDown size={35} />
-            </S.ShowMore>
+                <S.ShowMore role="button" onClick={handleShowMore}>
+                  <p>Mostrar Mais</p>
+                  <ArrowDown size={35} />
+                </S.ShowMore>
+              </>
+            ) : (
+              <Empty
+                title=":("
+                description="Não foi encontrado jogos com esses filtros"
+              />
+            )}
           </section>
         )}
       </S.Main>
