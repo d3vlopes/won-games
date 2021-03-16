@@ -1,6 +1,11 @@
+import { useRouter } from 'next/router'
+import { ParsedUrlQueryInput } from 'querystring'
+
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/KeyboardArrowDown'
 
 import { useQueryGames } from 'graphql/queries/games'
+
+import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
 
 import Base from 'templates/Base'
 
@@ -16,12 +21,23 @@ export type GamesTemplateProps = {
 }
 
 const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
+  const { push, query } = useRouter()
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, loading, fetchMore } = useQueryGames({
-    variables: { limit: 15 }
+    variables: {
+      limit: 15,
+      where: parseQueryStringToWhere({ queryString: query, filterItems }),
+      sort: query.sort as string | null
+    }
   })
 
-  const handleFilter = () => {
+  const handleFilter = (items: ParsedUrlQueryInput) => {
+    push({
+      pathname: '/games',
+      query: items
+    })
+
     return
   }
 
@@ -32,7 +48,14 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   return (
     <Base>
       <S.Main>
-        <ExploreSidebar items={filterItems} onFilter={handleFilter} />
+        <ExploreSidebar
+          initialValues={parseQueryStringToFilter({
+            queryString: query,
+            filterItems
+          })}
+          items={filterItems}
+          onFilter={handleFilter}
+        />
 
         {loading ? (
           <Loading color="primary" size={4.8} />
