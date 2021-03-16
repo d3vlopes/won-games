@@ -29,25 +29,12 @@ jest.mock('templates/Base', () => ({
 }))
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
-    const { container } = renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>
-    )
-
-    expect(container.querySelector('#loading')).toBeInTheDocument()
-  })
-
   it('should render sections', async () => {
-    const { container } = renderWithTheme(
+    renderWithTheme(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>
     )
-
-    // No inicio mostra o loading
-    expect(container.querySelector('#loading')).toBeInTheDocument()
 
     // Espera até encontrar o elemento
     expect(await screen.findByText(/preço/i)).toBeInTheDocument()

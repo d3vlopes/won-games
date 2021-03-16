@@ -26,6 +26,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, loading, fetchMore } = useQueryGames({
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
@@ -58,38 +59,43 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           onFilter={handleFilter}
         />
 
-        {loading ? (
-          <Loading color="primary" size={4.8} />
-        ) : (
-          <section>
-            {data?.games.length ? (
-              <>
-                <Grid>
-                  {data?.games.map((game) => (
-                    <GameCard
-                      key={game.slug}
-                      title={game.name}
-                      slug={game.slug}
-                      developer={game.developers[0].name}
-                      img={`http://localhost:1337${game.cover!.url}`}
-                      price={game.price}
-                    />
-                  ))}
-                </Grid>
-
-                <S.ShowMore role="button" onClick={handleShowMore}>
-                  <p>Mostrar Mais</p>
-                  <ArrowDown size={35} />
-                </S.ShowMore>
-              </>
-            ) : (
-              <Empty
-                title=":("
-                description="Não foi encontrado jogos com esses filtros"
-              />
-            )}
-          </section>
-        )}
+        <section>
+          {data?.games.length ? (
+            <>
+              <Grid>
+                {data?.games.map((game) => (
+                  <GameCard
+                    key={game.slug}
+                    title={game.name}
+                    slug={game.slug}
+                    developer={game.developers[0].name}
+                    img={`http://localhost:1337${game.cover!.url}`}
+                    price={game.price}
+                  />
+                ))}
+              </Grid>
+              <S.ShowMore>
+                {loading ? (
+                  // <S.ShowMoreLoading
+                  //   src="img/dots.svg"
+                  //   alt="Carregando mais jogos..."
+                  // />
+                  <Loading color="primary" size={4.8} />
+                ) : (
+                  <S.ShowMoreButton role="button" onClick={handleShowMore}>
+                    <p>Mostrar Mais</p>
+                    <ArrowDown size={35} />
+                  </S.ShowMoreButton>
+                )}
+              </S.ShowMore>
+            </>
+          ) : (
+            <Empty
+              title=":("
+              description="Não foi encontrado jogos com esses filtros"
+            />
+          )}
+        </section>
       </S.Main>
     </Base>
   )
