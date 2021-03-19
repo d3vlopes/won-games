@@ -21,9 +21,7 @@ export const parseQueryStringToWhere = ({
 
       obj[key] = !isCheckbox
         ? queryString[key]
-        : {
-            name_contains: queryString[key]
-          }
+        : { name_contains: queryString[key] }
     })
 
   return obj
