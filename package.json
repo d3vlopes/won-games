@@ -51,6 +51,7 @@
     "@storybook/react": "6.1.16",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^5.1.0",
     "@testing-library/user-event": "^12.2.2",
     "@types/jest": "^26.0.21",
     "@types/node": "^14.14.35",

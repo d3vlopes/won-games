@@ -13,9 +13,8 @@ export type CartProviderProps = {
   children: React.ReactNode
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CartProvider = ({ children }: CartProviderProps) => {
-  // return <CartContext.Provider value={{}}>{children}</CartContext.Provider>
+  return <CartContext.Provider value={{}}>{children}</CartContext.Provider>
 }
 
 const useCart = () => useContext(CartContext)
