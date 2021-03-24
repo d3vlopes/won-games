@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen } from 'utils/test-utils'
 
 import Profile from '.'
 
@@ -30,7 +29,7 @@ jest.mock('components/ProfileMenu', () => ({
 
 describe('<Profile />', () => {
   it('should render the Profile', () => {
-    renderWithTheme(<Profile>children</Profile>)
+    render(<Profile>children</Profile>)
 
     expect(screen.getByText('children')).toBeInTheDocument()
     expect(screen.getByText('Meu perfil')).toBeInTheDocument()

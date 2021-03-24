@@ -1,10 +1,10 @@
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render } from 'utils/test-utils'
 
 import Loading from '.'
 
 describe('<Loading />', () => {
   it('should render by default', () => {
-    const { container } = renderWithTheme(<Loading color="primary" />)
+    const { container } = render(<Loading color="primary" />)
 
     expect(container.firstChild).toBeInTheDocument()
 
@@ -25,7 +25,7 @@ describe('<Loading />', () => {
   })
 
   it('should render Loading in the sencodary color  ', () => {
-    const { container } = renderWithTheme(<Loading color="secondary" />)
+    const { container } = render(<Loading color="secondary" />)
 
     const svg = container.querySelector('#loading > svg')
 
@@ -35,9 +35,7 @@ describe('<Loading />', () => {
   })
 
   it('should render with the received size(rem) ', () => {
-    const { container } = renderWithTheme(
-      <Loading color="primary" size={4.5} />
-    )
+    const { container } = render(<Loading color="primary" size={4.5} />)
 
     const svg = container.querySelector('#loading > svg')
 

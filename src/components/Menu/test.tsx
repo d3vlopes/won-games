@@ -1,11 +1,10 @@
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen, fireEvent } from 'utils/test-utils'
 
 import Menu from '.'
 
 describe('<Menu />', () => {
   it('should render the menu', () => {
-    renderWithTheme(<Menu />)
+    render(<Menu />)
 
     // Testa os arial-labels
     expect(screen.getByLabelText(/abrir menu/i)).toBeInTheDocument()
@@ -16,7 +15,7 @@ describe('<Menu />', () => {
   })
 
   it('should handle the open/close mobile menu ', () => {
-    renderWithTheme(<Menu />)
+    render(<Menu />)
 
     // selecionar o MenuFull
     const fullMenuElement = screen.getByRole('navigation', { hidden: true })
@@ -38,7 +37,7 @@ describe('<Menu />', () => {
 
   // Verifica se os textos aparecem quando não está logado
   it('should show register box when logged out', () => {
-    renderWithTheme(<Menu />)
+    render(<Menu />)
     expect(screen.queryByText(/meu perfil/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/favoritos/i)).not.toBeInTheDocument()
     expect(screen.getByText(/criar conta/i)).toBeInTheDocument()
@@ -46,7 +45,7 @@ describe('<Menu />', () => {
   })
 
   it('should show whishligth and account when logged in', () => {
-    renderWithTheme(<Menu username="lopes" />)
+    render(<Menu username="lopes" />)
     expect(screen.getAllByText(/meu perfil/i)).toHaveLength(2)
     expect(screen.getAllByText(/favoritos/i)).toHaveLength(2)
     expect(screen.queryByText(/entrar/i)).not.toBeInTheDocument()
