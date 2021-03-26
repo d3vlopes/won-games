@@ -11,7 +11,7 @@ const CartIcon = () => {
       {quantity > 0 && (
         <S.Badge aria-label="Items do carrinho">{quantity}</S.Badge>
       )}
-      <ShoppingCart aria-label="Carrinho de comprar" />
+      <ShoppingCart aria-label="Carrinho de compras" />
     </S.Wrapper>
   )
 }
