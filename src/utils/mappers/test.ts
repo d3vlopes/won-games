@@ -126,7 +126,7 @@ describe('cartMapper()', () => {
         id: '1',
         img: 'http://localhost:1337/image.jpg',
         title: 'game',
-        price: '$10.00'
+        price: 'R$\xa010,00'
       }
     ])
   })

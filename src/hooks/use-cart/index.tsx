@@ -3,7 +3,7 @@ import { useContext, createContext, useState, useEffect } from 'react'
 import { useQueryGames } from 'graphql/queries/games'
 import { getStorageItem, setStorageItem } from 'utils/localStorage'
 import { cartMapper } from 'utils/mappers'
-import { formatPriceUS } from 'utils/format-price'
+import formatPrice from 'utils/format-price'
 
 const CART_KEY = 'cartItems'
 
@@ -93,7 +93,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
       value={{
         items: cartMapper(data?.games),
         quantity: cartItems.length,
-        total: formatPriceUS(total || 0),
+        total: formatPrice(total || 0),
         isInCart,
         addToCart,
         removeFromCart,

@@ -5,7 +5,8 @@ import { renderHook } from '@testing-library/react-hooks'
 import { setStorageItem } from 'utils/localStorage'
 
 import { useCart, CartProvider, CartProviderProps } from '.'
-import { cartItems, gamesMock } from './mock'
+import { gamesMock } from './mock'
+import { cartItems } from './mock'
 
 describe('useCart()', () => {
   beforeEach(() => {
@@ -33,7 +34,7 @@ describe('useCart()', () => {
 
     expect(result.current.items).toStrictEqual(cartItems)
     expect(result.current.quantity).toBe(2)
-    expect(result.current.total).toBe('$21.00')
+    expect(result.current.total).toBe('R$\xa021,00')
   })
 
   it('should return true/false if the item is already in the cart', () => {
