@@ -1,4 +1,3 @@
-import { AddShoppingCart } from '@styled-icons/material/AddShoppingCart'
 import { HeartOutline } from '@styled-icons/evaicons-outline/HeartOutline'
 
 import formatPrice from 'utils/format-price'
@@ -6,16 +5,18 @@ import formatPrice from 'utils/format-price'
 import Heading from 'components/Heading'
 import Ribbon from 'components/Ribbon'
 import Button from 'components/Button'
+import CartButton from 'components/CartButton'
 
 import * as S from './styles'
 
 export type GameInfoProps = {
+  id: string
   title: string
   description: string
   price: number
 }
 
-const GameInfo = ({ title, description, price }: GameInfoProps) => (
+const GameInfo = ({ id, title, description, price }: GameInfoProps) => (
   <S.Wrapper>
     <Heading lineBottom color="black">
       {title}
@@ -26,9 +27,7 @@ const GameInfo = ({ title, description, price }: GameInfoProps) => (
     <S.Description>{description}</S.Description>
 
     <S.ButtonsWrapper>
-      <Button size="large" icon={<AddShoppingCart />}>
-        Adicionar ao carrinho
-      </Button>
+      <CartButton id={id} size="large" hasText />
 
       <Button icon={<HeartOutline />} size="large" minimal>
         Favorito
