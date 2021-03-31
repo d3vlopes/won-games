@@ -4,15 +4,12 @@ import media from 'styled-media-query'
 
 import * as ButtonStyles from 'components/Button/styles'
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-  `}
-`
+export const Wrapper = styled.div``
 
 export const Body = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
+    background: ${theme.colors.white};
   `}
 `
 
