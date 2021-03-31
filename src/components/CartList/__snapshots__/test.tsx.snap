@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CardList /> should render the cart list 1`] = `
+exports[`<CartList /> should render the cart list 1`] = `
 .c1 {
   padding: 2.4rem;
   border-bottom: 0.1rem solid #EAEAEA;

@@ -1,10 +1,10 @@
 import { render, screen } from 'utils/test-utils'
 import { CartContextDefaultValues } from 'hooks/use-cart'
 
-import CardList from '.'
+import CartList from '.'
 import items from './mock'
 
-describe('<CardList />', () => {
+describe('<CartList />', () => {
   it('should render the cart list', () => {
     const cartProviderProps = {
       ...CartContextDefaultValues,
@@ -12,7 +12,7 @@ describe('<CardList />', () => {
       total: 'R$ 330,00'
     }
 
-    const { container } = render(<CardList />, { cartProviderProps })
+    const { container } = render(<CartList />, { cartProviderProps })
 
     expect(screen.getAllByRole('heading')).toHaveLength(2)
     expect(screen.getByText('R$ 330,00')).toHaveStyle({
@@ -25,16 +25,17 @@ describe('<CardList />', () => {
   it('should render the button', () => {
     const cartProviderProps = {
       ...CartContextDefaultValues,
-      items
+      items,
+      loading: true
     }
 
-    render(<CardList hasButton />, { cartProviderProps })
+    render(<CartList hasButton />, { cartProviderProps })
 
-    expect(screen.getByText(/finalizar compra/i)).toBeInTheDocument()
+    expect(screen.getByTitle(/loading/i)).toBeInTheDocument()
   })
 
   it('should render empty if there are no games', () => {
-    render(<CardList />)
+    render(<CartList />)
 
     expect(screen.getByText(/seu carrinho está vazio/i)).toBeInTheDocument()
     expect(screen.queryByText(/total/i)).not.toBeInTheDocument()
