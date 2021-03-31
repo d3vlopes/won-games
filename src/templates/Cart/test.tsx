@@ -1,6 +1,5 @@
 import { render, screen } from 'utils/test-utils'
 
-import itemsMock from 'components/CartList/mock'
 import cardsMock from 'components/PaymentOptions/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
@@ -8,8 +7,6 @@ import highlightMock from 'components/Highlight/mock'
 import Cart from '.'
 
 const props = {
-  items: itemsMock,
-  total: 'R$ 430,00',
   cards: cardsMock,
   recommendedGames: gamesMock,
   recommendedHighlight: highlightMock
@@ -62,11 +59,5 @@ describe('<Cart />', () => {
     expect(screen.getByTestId('Mock PaymentOptions')).toBeInTheDocument()
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
     expect(screen.queryByTestId('Mock Empty')).not.toBeInTheDocument()
-  })
-
-  it('should render empty section if there are no items', () => {
-    render(<Cart {...props} items={[]} />)
-
-    expect(screen.getByTestId('Mock Empty')).toBeInTheDocument()
   })
 })

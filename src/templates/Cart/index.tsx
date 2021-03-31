@@ -8,7 +8,6 @@ import CartList, { CartListProps } from 'components/CartList'
 import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions'
 import Heading from 'components/Heading'
 import Showcase from 'components/Showcase'
-import Empty from 'components/Empty'
 
 import * as S from './styles'
 
@@ -23,8 +22,6 @@ const Cart = ({
   recommendedTitle,
   recommendedGames,
   recommendedHighlight,
-  items,
-  total,
   cards
 }: CartProps) => {
   const handlePayment = () => ({})
@@ -36,19 +33,11 @@ const Cart = ({
           Meu carrinho
         </Heading>
 
-        {items?.length ? (
-          <S.Content>
-            <CartList items={items} total={total} />
+        <S.Content>
+          <CartList />
 
-            <PaymentOptions cards={cards} handlePayment={handlePayment} />
-          </S.Content>
-        ) : (
-          <Empty
-            title="Seu carrinho está vazio"
-            description="Volte para a loja e explore bons jogos"
-            hasLink
-          />
-        )}
+          <PaymentOptions cards={cards} handlePayment={handlePayment} />
+        </S.Content>
 
         <Divider />
       </Container>
