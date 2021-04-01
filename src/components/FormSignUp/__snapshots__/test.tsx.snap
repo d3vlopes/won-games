@@ -152,9 +152,9 @@ exports[`<FormSignUp /> should render the form 1`] = `
         </div>
         <input
           class="c5"
-          name="name"
-          placeholder="Nome"
-          type="name"
+          name="username"
+          placeholder="Nome de usuário"
+          type="text"
           value=""
         />
       </div>
@@ -273,13 +273,14 @@ exports[`<FormSignUp /> should render the form 1`] = `
           class="c5"
           name="confirm-password"
           placeholder="Repita a senha"
-          type="confirm-password"
+          type="password"
           value=""
         />
       </div>
     </div>
     <button
       class="c6 c7"
+      type="submit"
     >
       <span>
         Criar Conta
