@@ -6,15 +6,15 @@ describe('validations', () => {
       const values = { email: '', password: '' }
 
       expect(signInValidate(values)).toMatchObject({
-        email: '"email" is not allowed to be empty',
-        password: '"password" is not allowed to be empty'
+        email: 'campo vazio',
+        password: 'campo vazio'
       })
     })
 
     it('should return invalid email error', () => {
       const values = { email: 'invalid-email', password: '1234' }
       expect(signInValidate(values).email).toMatchInlineSnapshot(
-        `"\\"email\\" must be a valid email"`
+        `"email inválido"`
       )
     })
   })
@@ -35,7 +35,7 @@ describe('validations', () => {
       const values = { username: 'hi', email: '', password: '' }
 
       expect(signUpValidate(values).username).toMatchInlineSnapshot(
-        `"\\"username\\" length must be at least 5 characters long"`
+        `"precisa ter no mínimo 5 caracteres"`
       )
     })
 
@@ -47,7 +47,7 @@ describe('validations', () => {
       }
 
       expect(signUpValidate(values).email).toMatchInlineSnapshot(
-        `"\\"email\\" must be a valid email"`
+        `"email inválido"`
       )
     })
 
@@ -60,7 +60,7 @@ describe('validations', () => {
       }
 
       expect(signUpValidate(values).confirm_password).toMatchInlineSnapshot(
-        `"confirm password does not match with password"`
+        `"senhas estão diferentes"`
       )
     })
   })

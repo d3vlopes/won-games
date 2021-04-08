@@ -2,15 +2,27 @@ import { UsersPermissionsRegisterInput } from 'graphql/generate/globalTypes'
 import Joi from 'joi'
 
 const fieldsValidations = {
-  username: Joi.string().min(5).required(),
+  username: Joi.string().min(5).required().messages({
+    'string.empty': `campo vazio`,
+    'string.min': `precisa ter no mínimo {#limit} caracteres`
+  }),
   email: Joi.string()
     .email({ tlds: { allow: false } })
-    .required(),
-  password: Joi.string().required(),
+    .required()
+    .messages({
+      'string.email': `email inválido`,
+      'string.empty': `campo vazio`
+    }),
+  password: Joi.string().required().messages({
+    'string.empty': `campo vazio`
+  }),
   confirm_password: Joi.string()
     .valid(Joi.ref('password'))
     .required()
-    .messages({ 'any.only': 'confirm password does not match with password' })
+    .messages({
+      'any.only': 'senhas estão diferentes',
+      'any.required': ''
+    })
 }
 
 export type FieldErrors = {
