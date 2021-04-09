@@ -51,4 +51,11 @@ describe('<Menu />', () => {
     expect(screen.queryByText(/entrar/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/criar conta/i)).not.toBeInTheDocument()
   })
+
+  it('should not show sign ir or dropdownUser if loading', () => {
+    render(<Menu username="Leandro" loading />)
+
+    expect(screen.queryByText(/meu perfil/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/entrar/i)).not.toBeInTheDocument()
+  })
 })
