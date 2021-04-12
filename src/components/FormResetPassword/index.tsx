@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Lock, ErrorOutline } from '@styled-icons/material-outlined'
 
-import { FieldErrors } from 'utils/validations'
+import { FieldErrors, resetValidate } from 'utils/validations'
 
 import { FormWrapper, FormError } from 'components/Form'
 import TextField from 'components/TextField'
@@ -13,7 +13,7 @@ import Loading from 'components/Loading'
 const FormResetPassword = () => {
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<FieldErrors>({})
-  const [values, setValues] = useState({ password: '', confirmPassword: '' })
+  const [values, setValues] = useState({ password: '', confirm_password: '' })
   const [loading, setLoading] = useState(false)
 
   const routes = useRouter()
@@ -27,7 +27,7 @@ const FormResetPassword = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = {}
+    const errors = resetValidate(values)
 
     if (Object.keys(errors).length) {
       setFieldError(errors)

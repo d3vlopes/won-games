@@ -21,7 +21,8 @@ const fieldsValidations = {
     .required()
     .messages({
       'any.only': 'senhas estão diferentes',
-      'any.required': ''
+      'any.required': '',
+      'string.empty': 'campo vazio'
     })
 }
 
@@ -52,6 +53,27 @@ export function signUpValidate(values: UsersPermissionsRegisterInput) {
 export function signInValidate(values: SignInValues) {
   const { email, password } = fieldsValidations
   const schema = Joi.object({ email, password })
+
+  return getFieldErrors(schema.validate(values, { abortEarly: false }))
+}
+
+type ForgotValidateParams = Pick<UsersPermissionsRegisterInput, 'email'>
+
+export function forgotValidate(values: ForgotValidateParams) {
+  const { email } = fieldsValidations
+  const schema = Joi.object({ email })
+
+  return getFieldErrors(schema.validate(values, { abortEarly: false }))
+}
+
+type ResetValidateParams = {
+  password: string
+  confirm_password: string
+}
+
+export function resetValidate(values: ResetValidateParams) {
+  const { password, confirm_password } = fieldsValidations
+  const schema = Joi.object({ password, confirm_password })
 
   return getFieldErrors(schema.validate(values, { abortEarly: false }))
 }
