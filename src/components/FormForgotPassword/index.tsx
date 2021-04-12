@@ -1,22 +1,19 @@
-import Link from 'next/link'
 import { signIn } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { Email, Lock, ErrorOutline } from '@styled-icons/material-outlined'
+import { Email, ErrorOutline } from '@styled-icons/material-outlined'
 
-import { FieldErrors, signInValidate } from 'utils/validations'
+import { FieldErrors } from 'utils/validations'
 
-import { FormWrapper, FormLink, FormError } from 'components/Form'
+import { FormWrapper, FormError } from 'components/Form'
 import TextField from 'components/TextField'
 import Button from 'components/Button'
 import Loading from 'components/Loading'
 
-import * as S from './styles'
-
-const FormSignIn = () => {
+const FormForgotPassword = () => {
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<FieldErrors>({})
-  const [values, setValues] = useState({ email: '', password: '' })
+  const [values, setValues] = useState({ email: '' })
   const [loading, setLoading] = useState(false)
 
   const routes = useRouter()
@@ -30,7 +27,7 @@ const FormSignIn = () => {
     event.preventDefault()
     setLoading(true)
 
-    const errors = signInValidate(values)
+    const errors = {}
 
     if (Object.keys(errors).length) {
       setFieldError(errors)
@@ -72,32 +69,12 @@ const FormSignIn = () => {
           icon={<Email />}
         />
 
-        <TextField
-          name="password"
-          placeholder="Senha"
-          type="password"
-          error={fieldError?.password}
-          onInputChange={(value) => handleInput('password', value)}
-          icon={<Lock />}
-        />
-
-        <Link href="/forgot-password" passHref>
-          <S.ForgotPassword href="#">Esqueceu sua senha?</S.ForgotPassword>
-        </Link>
-
         <Button type="submit" size="large" fullWidth disabled={loading}>
-          {loading ? <Loading color="white" size={4.5} /> : <span>Entrar</span>}
+          {loading ? <Loading color="white" size={4.5} /> : <span>Enviar</span>}
         </Button>
-
-        <FormLink>
-          Ainda não tem conta?{' '}
-          <Link href="/sign-up">
-            <a>Criar conta</a>
-          </Link>
-        </FormLink>
       </form>
     </FormWrapper>
   )
 }
 
-export default FormSignIn
+export default FormForgotPassword
