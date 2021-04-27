@@ -1,7 +1,14 @@
 import { MockedProvider } from '@apollo/client/testing'
+import { act, waitFor } from '@testing-library/react'
 import { renderHook } from '@testing-library/react-hooks'
+
 import { useWishlist, WishlistProvider } from '.'
-import { wishlistItems, wishlistMock } from './mock'
+import {
+  createWishlistMock,
+  updateWishlistMock,
+  wishlistItems,
+  wishlistMock
+} from './mock'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const useSession = jest.spyOn(require('next-auth/client'), 'useSession')
@@ -46,5 +53,47 @@ describe('useWishlist', () => {
     expect(result.current.isInWishlist('1')).toBe(true)
     expect(result.current.isInWishlist('2')).toBe(true)
     expect(result.current.isInWishlist('3')).toBe(false)
+  })
+
+  it('should add item in wishlist creating a new list', async () => {
+    const wrapper = ({ children }: { children: React.ReactNode }) => (
+      <MockedProvider mocks={[createWishlistMock]}>
+        <WishlistProvider>{children}</WishlistProvider>
+      </MockedProvider>
+    )
+
+    const { result, waitForNextUpdate } = renderHook(() => useWishlist(), {
+      wrapper
+    })
+
+    act(() => {
+      result.current.addToWishlist('3')
+    })
+
+    await waitForNextUpdate()
+
+    expect(result.current.items).toStrictEqual([wishlistItems[2]])
+  })
+
+  it('should add item in wishlist updating the current list', async () => {
+    const wrapper = ({ children }: { children: React.ReactNode }) => (
+      <MockedProvider mocks={[wishlistMock, updateWishlistMock]}>
+        <WishlistProvider>{children}</WishlistProvider>
+      </MockedProvider>
+    )
+
+    const { result, waitForNextUpdate } = renderHook(() => useWishlist(), {
+      wrapper
+    })
+
+    await waitForNextUpdate()
+
+    act(() => {
+      result.current.addToWishlist('3')
+    })
+
+    await waitFor(() => {
+      expect(result.current.items).toStrictEqual(wishlistItems)
+    })
   })
 })
