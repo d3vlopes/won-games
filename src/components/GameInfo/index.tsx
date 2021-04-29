@@ -1,4 +1,3 @@
-import 'session.mock'
 import formatPrice from 'utils/format-price'
 
 import Heading from 'components/Heading'

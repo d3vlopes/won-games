@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event'
 import { WishlistContextDefaultValues } from 'hooks/use-wishlist'
-import { act, render, screen } from 'utils/test-utils'
+import { act, render, screen, waitFor } from 'utils/test-utils'
 
 import WishlistButton from '.'
 
@@ -84,7 +84,9 @@ describe('<WishlistButton />', () => {
       userEvent.click(screen.getByText(/adicionar aos favoritos/i))
     })
 
-    expect(wishlistProviderProps.addToWishlist).toHaveBeenCalledWith('1')
+    waitFor(() => {
+      expect(wishlistProviderProps.addToWishlist).toHaveBeenCalledWith('1')
+    })
   })
 
   it('should remove from wishlist', async () => {
@@ -100,6 +102,8 @@ describe('<WishlistButton />', () => {
       userEvent.click(screen.getByText(/remover dos favoritos/i))
     })
 
-    expect(wishlistProviderProps.removeFromWishlist).toHaveBeenCalledWith('1')
+    waitFor(() => {
+      expect(wishlistProviderProps.removeFromWishlist).toHaveBeenCalledWith('1')
+    })
   })
 })
