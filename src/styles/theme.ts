@@ -37,7 +37,7 @@ export default {
   },
   spacings: {
     xxsmall: '0.8rem',
-    xsmall: '1.6rem',
+    xsmall: '1.6rem', // 1rem => 10px
     small: '2.4rem',
     medium: '3.2rem',
     large: '4.0rem',
