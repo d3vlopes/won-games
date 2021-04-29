@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from 'utils/test-utils'
+import 'session.mock'
+import { render, screen } from 'utils/test-utils'
 
 import theme from 'styles/theme'
 
@@ -75,24 +76,6 @@ describe('<GameCard />', () => {
     render(<GameCard {...props} price={0} />)
 
     expect(screen.getByText('FREE')).toBeInTheDocument()
-  })
-
-  it('should render a filled Favorite icon when favorite is true ', () => {
-    render(<GameCard {...props} favorite />)
-
-    expect(screen.getByLabelText(/remover dos favoritos/i)).toBeInTheDocument()
-  })
-
-  it('should call onFav method when favorite is clicked ', () => {
-    // Cria uma fução para teste
-    const onFav = jest.fn()
-
-    render(<GameCard {...props} favorite onFav={onFav} />)
-
-    // Seleciona o primeiro botão
-    fireEvent.click(screen.getAllByRole('button')[0])
-
-    expect(onFav).toBeCalled()
   })
 
   it('should render Ribbon ', () => {
