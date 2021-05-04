@@ -22,7 +22,10 @@ const PaymentForm = () => {
           Pagamento
         </Heading>
 
-        <CardElement onChange={handleChange} />
+        <CardElement
+          options={{ style: { base: { fontSize: '16px' } } }}
+          onChange={handleChange}
+        />
 
         {error && (
           <S.Error>
