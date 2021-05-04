@@ -48,6 +48,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
           setError(data.error)
         } else {
           // senão o paymentIntent foi válido => setClientSecret
+          setFreeGames(false)
           setClientSecret(data.client_secret)
           // console.log(data.client_secret)
         }
