@@ -10,8 +10,10 @@ import * as S from './styles'
 
 const PaymentForm = () => {
   const [error, setError] = useState<string | null>(null)
+  const [disabled, setDisabled] = useState(true)
 
   const handleChange = async (event: StripeCardElementChangeEvent) => {
+    setDisabled(event.empty)
     setError(event.error ? event.error.message : '')
   }
 
@@ -23,7 +25,10 @@ const PaymentForm = () => {
         </Heading>
 
         <CardElement
-          options={{ style: { base: { fontSize: '16px' } } }}
+          options={{
+            hidePostalCode: true,
+            style: { base: { fontSize: '16px' } }
+          }}
           onChange={handleChange}
         />
 
@@ -38,7 +43,11 @@ const PaymentForm = () => {
         <Button as="a" fullWidth minimal>
           Continuar comprando
         </Button>
-        <Button fullWidth icon={<ShoppingCart />}>
+        <Button
+          fullWidth
+          icon={<ShoppingCart />}
+          disabled={disabled || !!error}
+        >
           Finalizar compra
         </Button>
       </S.Footer>
