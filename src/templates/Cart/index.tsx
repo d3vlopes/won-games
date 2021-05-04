@@ -1,3 +1,6 @@
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+
 import Base from 'templates/Base'
 
 import { Container } from 'components/Container'
@@ -17,6 +20,8 @@ export type CartProps = {
   recommendedHighlight: HighlightProps
 } & CartListProps
 
+const stripe = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`)
+
 const Cart = ({
   recommendedTitle,
   recommendedGames,
@@ -31,7 +36,10 @@ const Cart = ({
 
         <S.Content>
           <CartList />
-          <PaymentForm />
+
+          <Elements stripe={stripe}>
+            <PaymentForm />
+          </Elements>
         </S.Content>
 
         <Divider />
