@@ -1,5 +1,8 @@
+import { useEffect } from 'react'
 import { Done } from '@styled-icons/material-outlined/Done'
 import Link from 'next/link'
+
+import { useCart } from 'hooks/use-cart'
 
 import Base from 'templates/Base'
 
@@ -21,6 +24,12 @@ const Success = ({
   recommendedGames,
   recommendedHighlight
 }: SuccessTemplateProps) => {
+  const { clearCart } = useCart()
+
+  useEffect(() => {
+    clearCart()
+  }, [clearCart])
+
   return (
     <Base>
       <Container>
@@ -32,12 +41,11 @@ const Success = ({
           </S.CheckMark>
 
           <S.Text>
-            Aguarde seus detalhes de pagamento por e-mail. Seu jogo já está
-            disponível para download dentro do{' '}
+            Aguarde seus detalhes de pagamento por e-mail.
+            <br /> Seu jogo já está disponível para download dentro de{' '}
             <Link href="/profile/orders">
-              <a>Meus pedidos</a>
+              <a>Meus pedidos.</a>
             </Link>
-            . Aproveite!
           </S.Text>
         </S.Wrapper>
       </Container>
