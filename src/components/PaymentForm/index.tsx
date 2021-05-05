@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react'
 import { Session } from 'next-auth/client'
-import { CardElement } from '@stripe/react-stripe-js'
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ShoppingCart, ErrorOutline } from '@styled-icons/material-outlined'
 
@@ -21,6 +21,8 @@ type PaymentFormProps = {
 
 const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
+  const stripe = useStripe()
+  const elements = useElements()
 
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -67,6 +69,25 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
     setLoading(true)
+
+    const payload = await stripe!.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements!.getElement(CardElement)!
+      }
+    })
+
+    if (payload.error) {
+      setError(`Pagamento falhou ${payload.error.message}`)
+      setLoading(false)
+    } else {
+      setError(null)
+      setLoading(false)
+
+      console.log('Compra efetuada com sucesso!')
+
+      // salvar a compra no banco do Strapi
+      // redirecionar para a página de sucesso
+    }
   }
 
   return (
