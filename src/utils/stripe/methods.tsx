@@ -7,7 +7,7 @@ type FetcherParams = {
   token: string
 }
 
-const fetcher = async ({ url, token, body }: FetcherParams) => {
+const fetcher = async ({ url, body, token }: FetcherParams) => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
     method: 'POST',
     headers: {
