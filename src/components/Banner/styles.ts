@@ -9,7 +9,7 @@ export const Wrapper = styled.main`
   ${media.lessThan('large')`
     ${RibbonStyles.Wrapper} {
       right: 0;
-      
+
       &::before {
         display: none;
       }
@@ -21,22 +21,13 @@ export const Wrapper = styled.main`
   `}
 `
 
-type ImageProps = {
-  src: string
-}
+export const ImageWrapper = styled.div`
+  width: 100%;
+  height: 23rem;
+  position: relative;
 
-export const Image = styled.div<ImageProps>`
-  ${({ theme, src }) => css`
-    width: 100%;
-    height: 23rem;
-    background-color: ${theme.colors.lightGray};
-    background-image: url(${src});
-    background-position: center center;
-    background-size: cover;
-
-    ${media.greaterThan('medium')`
-      height: 58rem;
-    `}
+  ${media.greaterThan('medium')`
+    height: 58rem;
   `}
 `
 
