@@ -6,6 +6,7 @@ import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined/
 import { useQueryGames } from 'graphql/queries/games'
 
 import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
+import { getImageUrl } from 'utils/getImageUrl'
 
 import Base from 'templates/Base'
 
@@ -76,7 +77,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                     title={game.name}
                     slug={game.slug}
                     developer={game.developers[0].name}
-                    img={`http://localhost:1337${game.cover!.url}`}
+                    img={`${getImageUrl(game.cover!.url)}`}
                     price={game.price}
                   />
                 ))}
