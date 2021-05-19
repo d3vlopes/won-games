@@ -1,4 +1,5 @@
 import NextNprogress from 'nextjs-progressbar'
+import { DefaultSeo } from 'next-seo'
 import { Provider as AuthProvider } from 'next-auth/client'
 import { ApolloProvider } from '@apollo/client'
 import { ThemeProvider } from 'styled-components'
@@ -9,6 +10,8 @@ import { useApollo } from 'utils/apollo'
 
 import { CartProvider } from 'hooks/use-cart'
 import { WishlistProvider } from 'hooks/use-wishlist'
+
+import SEO from '../../next-seo.config'
 
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
@@ -32,6 +35,7 @@ function App({ Component, pageProps }: AppProps) {
                   content="A melhor loja de games do mundo!"
                 />
               </Head>
+              <DefaultSeo {...SEO} />
               <GlobalStyles />
               <NextNprogress
                 color="#F231A5"
