@@ -262,11 +262,11 @@ exports[`<GameInfo /> should render game informations 1`] = `
     class="c5"
   >
     <button
+      aria-label="Adicionar ao carrinho"
       class="c6"
     >
       <svg
         aria-hidden="true"
-        aria-label="Adicionar ao carrinho"
         class="c7"
         fill="currentColor"
         focusable="false"

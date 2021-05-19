@@ -17,12 +17,12 @@ const Footer = () => (
         <a href="tel:+5137151234">(51) 3715-1234</a>
       </S.Column>
 
-      <S.Column>
+      <S.Column aria-labelledby="redes-socias">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Siga-nos
         </Heading>
 
-        <nav aria-labelledby="social media">
+        <nav id="redes-socias">
           <a
             href="https://www.instagram.com/won-games"
             target="_blank"
@@ -54,12 +54,12 @@ const Footer = () => (
         </nav>
       </S.Column>
 
-      <S.Column>
+      <S.Column aria-labelledby="resources">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Links
         </Heading>
 
-        <nav aria-labelledby="footer resources">
+        <nav id="recursos">
           <Link href="/">
             <a>Home</a>
           </Link>
@@ -72,7 +72,7 @@ const Footer = () => (
         </nav>
       </S.Column>
 
-      <S.Column>
+      <S.Column aria-label="contato">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Endereço
         </Heading>
