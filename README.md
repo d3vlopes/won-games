@@ -1,6 +1,8 @@
 <div align="center">
-  <img src=".github/logo.png" alt="Let Me Ask logo">
+  <img src=".github/logo.png" alt="Won Games">
 </div>
+
+![WonGames preview](.github/preview.png)
 
 ## Sobre o projeto
 A Won é um ecommerce de games que foi criado durante o curso <a href="https://reactavancado.com.br/" target="_blank">React Avançado</a>.
@@ -23,4 +25,4 @@ Durante o projeto foram criados:
 
 
 ## Layout
-O layout do projeto pode ser visuzalizado <a href="https://www.figma.com/file/cJxFLkHXqEhXDV7VH7GHtw/Won-Games?node-id=263%3A2285" target="_blank">clicando aqui</a> 
+O layout do projeto pode ser visuzalizado <a href="https://www.figma.com/file/cJxFLkHXqEhXDV7VH7GHtw/Won-Games?node-id=263%3A2285" target="_blank">clicando aqui</a>
