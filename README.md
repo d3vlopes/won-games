@@ -16,7 +16,7 @@ Durante o projeto foram criados:
 
 
 
-## Outras tecnologias incríveis utilizadas:
+## Outras tecnologias e ferramentas utilizadas:
 - [TypeScript](https://www.typescriptlang.org/)
 - [Styled Components](https://styled-components.com/)
 - [Eslint](https://eslint.org/)
